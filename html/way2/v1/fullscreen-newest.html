@@ -183,9 +183,6 @@
         color: #fff;
         font-size: 1em;
         border-width: 0;
-        position: absolute;
-        bottom: 1em;
-        left: 7.5%;
     }
 </style>
 <!-- @@close-->
@@ -204,6 +201,10 @@
         bg.style.paddingBottom = pImg * 100 + "%";
     }
     show();
+    var availHeight =  document.documentElement.clientHeight;
+    var bodyHeight = query('#wrap').getBoundingClientRect().bottom;
+    query(".small").style.paddingBottom = (availHeight - bodyHeight - 90) + "px";
+    query("body").style.height = availHeight + "px";
     SDK.init();
     SDK.bindEmitEvent('#wrap', 'ViewClicked', function (action) {
         var s = '{IS_SHELTER}';
