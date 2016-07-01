@@ -1,0 +1,113 @@
+<!-- @@master  = ../../master.html -->
+<!-- @@block = define -->
+<meta content="news/v1/news,SDK1.1" />
+<meta content="{DESCRIPTION_LIST}" />
+<!-- @@close-->
+
+
+<!-- @@block = header -->
+<style type="text/css">
+    img {
+        float: left;
+        width: 100%;
+    }
+    a {
+        color: #444;
+        text-decoration: none;
+    }
+    h1{
+        padding: .5rem 0;
+        /* font-weight: bold; */
+        display: inline;
+        font-size: 1.2em;
+        width: 70%;
+    }
+    body {
+        background: transparent;
+        font-family: "Roboto", Arial, '微软雅黑', sans-serif;
+        color: #444;
+        font-size: 16px;
+    }
+    article {
+        clear: both;
+        position: relative;
+        border-bottom: 1px solid #ddd;
+        padding: 0.7rem .6rem .7rem 0.6rem;
+        box-sizing: border-box;
+        font-size: 14px;
+        background-color: #fafafa;
+        /* height: 5.8rem; */
+    }
+    article:last-child {
+        border-bottom: none;
+    }
+    article:after {
+        content:".";display:block;height:0;clear:both;visibility:hidden;
+    }
+    article img.icon {
+        width: 5.1rem;
+        height: 5.1rem;
+        float: left;
+        margin-right: 1rem;
+    }
+    
+    article .desc {
+        display: inline-block;
+        width: 70%;
+        height: 34px;
+        overflow: hidden;
+        font-size: 14px;
+        color: #666;
+    }
+    
+    @media screen and (max-width: 375px) {
+        article img.icon {
+            width: 4.6rem;
+            height: 4.6rem;
+            float: left;
+            margin-right: 1rem;
+        }
+    }
+/* 
+    body {
+        background: url('/assets/news/demo.png') no-repeat;
+        background-size: cover;
+        background-position: 0 5rem;
+    }
+
+    section {
+        opacity: .5;
+    } */
+</style>
+<!-- @@close-->
+
+<!-- @@block = body -->
+    <section>
+        <article ad-id="{AD_ID}" is-shelter="{IS_SHELTER}">
+            <img class="icon" src="{ICON}">
+            <h1 class="single-line">{TITLE}</h1><br>
+            <span class="desc">{DESC}</span><br>
+        </article>
+    </section>
+<!-- @@close-->
+
+<!-- @@block = footer -->
+<script>
+    SDK.init();
+    SDK.bindEmitEvent('article', 'ViewClicked', function (action) {
+        var adId = this.getAttribute('ad-id');
+        var is_shelter = this.getAttribute('is-shelter');
+        // YMJsObject.writeLog('real click event')
+        setTimeout(function () {
+            // YMJsObject.writeLog('after real click');
+            if(is_shelter == 1) {
+                SDK.showLoading();
+            }
+            // YMJsObject.writeLog('after loading');
+            action(adId.toString(), is_shelter.toString());
+        }, 100)
+        
+    });
+</script>
+
+<!-- @@close-->

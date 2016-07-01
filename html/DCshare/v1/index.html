@@ -1,0 +1,141 @@
+<!-- @@master  = ../../master-realTime-API.html-->
+
+<!-- @@block = define-->
+<!-- <meta content="" /> -->
+<meta content="DCshare/v1/index,SDK1.1" />
+<meta content="{DESCRIPTION_LIST}" />
+<!-- @@close-->
+
+<!-- @@block = header -->
+<script>
+    pImg = 1/1.91;
+
+    
+    function render() {
+        var html = '';
+        try {
+            html = TJ([
+                '<div class="main">',
+                    '<h1 class="single-line">{$title}</h1>',
+                    '<span class="circle"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAApCAQAAAB0U3r2AAAACXBIWXMAAAsTAAALEwEAmpwYAAADGWlDQ1BQaG90b3Nob3AgSUNDIHByb2ZpbGUAAHjaY2BgnuDo4uTKJMDAUFBUUuQe5BgZERmlwH6egY2BmYGBgYGBITG5uMAxIMCHgYGBIS8/L5UBA3y7xsDIwMDAcFnX0cXJlYE0wJpcUFTCwMBwgIGBwSgltTiZgYHhCwMDQ3p5SUEJAwNjDAMDg0hSdkEJAwNjAQMDg0h2SJAzAwNjCwMDE09JakUJAwMDg3N+QWVRZnpGiYKhpaWlgmNKflKqQnBlcUlqbrGCZ15yflFBflFiSWoKAwMD1A4GBgYGXpf8EgX3xMw8BUNTVQYqg4jIKAX08EGIIUByaVEZhMXIwMDAIMCgxeDHUMmwiuEBozRjFOM8xqdMhkwNTJeYNZgbme+y2LDMY2VmzWa9yubEtoldhX0mhwBHJycrZzMXM1cbNzf3RB4pnqW8xryH+IL5nvFXCwgJrBZ0E3wk1CisKHxYJF2UV3SrWJw4p/hWiRRJYcmjUhXSutJPZObIhsoJyp2V71HwUeRVvKA0RTlKRUnltepWtUZ1Pw1Zjbea+7QmaqfqWOsK6b7SO6I/36DGMMrI0ljS+LfJPdPDZivM+y0qLBOtfKwtbFRtRexY7L7aP3e47XjB6ZjzXpetruvdVrov9VjkudBrgfdCn8W+y/xW+a8P2Bq4N+hY8PmQW6HPwr5EMEUKRilFG8e4xUbF5cW3JMxO3Jx0Nvl5KlOaXLpNRlRmVdas7D059/KY8tULfAqLi2YXHy55WyZR7lJRWDmv6mz131q9uvj6SQ3HGn83G7Skt85ru94h2Ond1d59uJehz76/bsK+if8nO05pnXpiOu+M4JmzZj2aozW3ZN6+BVwLwxYtXvxxqcOyCcsfrjRe1br65lrddU3rb2402NSx+cFWq21Tt3/Y6btr1R6Oven7jh9QP9h56PURv6Obj4ufqD355LT3mS3nZM+3X/h0Ke7yqasW15bdEL3ZeuvrnfS7N+/7PDjwyPTx6qeKz2a+EHzZ9Zr5Td3bn+9LP3z6VPD53de8b+9+5P/88Lv4z7d/Vf//AwAqvx2K829RWwAAACBjSFJNAAB6JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAABFElEQVR42pSVwXHCMBBFnzYFoGMmF5JjTjCjAnAnQEekA9GBS3ABaIZUkSsdkIMZI2RpJfvi/TPv2Zpd2TLO0rPjly7cUK47AMKJHbBhcJbqJXw+qiZB8FPdIEjwHNsFgSWCwBJBxlvw/LQI5lk6z34Ksznc46cDhAPn2hskDnVBXmNNkNTXBZmvTxMk166yIPn+lgRTHng6h8tNxXOC0TdsKrzp+F//8cX2Ed75lur3dopqW8HdliGK3lTh1RSPFw2fw0ojc3BxqikcvLIJSnAWL8MZXINnuA4neA1+wetwhLfA05ic5cpag6PfkrMMOhwtxlkGNi0wyBJ4PD2aYRBsOzyefM0wGHAdHdfQ6+DYyP8BAOGNeEgHhkXPAAAAAElFTkSuQmCC"></span>',
+                    '<span class="small">{$desc}</span>',
+                '</div>'
+            ].join(''))({
+                title: '{TITLE}',
+                desc: '{DESC}'
+            });
+        } catch(e) {
+            html = '<div style="color:transparent">' + e + '</div>';
+        }
+        
+        return html
+    }
+    
+</script>
+
+<style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    body {
+        background: white;
+        font-family: Arial, 'Microsoft YaHei', sans-serif;
+        color: #444;
+        font-size: 14px;
+    }
+    .main {
+        padding: 10px;
+        position: relative;
+        background: #000;
+        color: #fff;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+    .main img {
+        width: 1em;
+        height: 2em;
+        border-radius: 8px;
+        left: 18px;
+        margin-top: 0.5em;
+    }
+    h1 {
+        font-size: 20px;
+        line-height: 18px;
+        width: 90%;
+    }
+    .small {
+        font-size: 14px;
+        line-height: 18px;
+        overflow: hidden;
+        height: 36px;
+        width: 50%;
+        display: inline-block;
+        vertical-align: top;
+    }
+    @media screen and (min-width: 600px) {
+        .small{
+            width: 70%;
+        }
+    }
+    @media screen and (max-width: 320px) {
+        .small{
+            width: 50%;
+        }
+    }
+    .cover{
+        display: none !important;
+    }
+    .circle{
+        width: 3em;
+        height: 3em;
+        border-radius: 1.5em;
+        background: #fff;
+        display: inline-block;
+        position: relative;
+        text-align: center;
+        margin-left: 5px;
+        margin-right: 5px;
+        line-height: 0px;
+        vertical-align: top;
+    }
+    .single-line {
+        white-space: inherit;
+        width: 25%;
+        line-height: 25px;
+    }
+
+</style>
+<!-- @@close-->
+
+<!-- @@block = body -->
+<img id="tracking_img" src="{IMPRESSION_TRACKING_URL}" width="0" height="0" style="display:none;">
+<section id="wrap" class="wrap">
+    <script>WRITE(render())</script>
+</section>
+<!-- @@close-->
+
+<!-- @@block = footer -->
+<script>
+    function show() {
+        var section = query("section");
+        var main = query(".main");
+        var width = section.offsetWidth * pImg + "px";
+        section.style.height = width;
+        main.style.height = width;
+        main.style.lineHeight = width;
+    }
+    var pImg = 1/5;
+    window.addEventListener("resize", show)
+    show(); 
+
+    SDK.init();
+    SDK.bindEmitEvent('#wrap', 'ViewClicked', function (action) {
+        SDK.showLoading();
+        action('{CLICK_THROUGH_URL}'); // 点击跳转
+        handleClick('{CLICK_TRACKING_URL}')  //模板端处理点击回传事件   
+    });
+</script>
+<!-- dev tools -->
+<!-- @@close-->
+

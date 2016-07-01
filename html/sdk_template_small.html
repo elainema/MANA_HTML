@@ -1,0 +1,168 @@
+<!-- @@master  = ../../master.html-->
+
+<!-- @@block = define-->
+<!-- <meta content="" /> -->
+<meta content="ApkShare/v1/appwal2,SDK1.1">
+<meta content="{DESCRIPTION_LIST}" />
+<!-- @@close-->
+
+<!-- @@block = header -->
+<script>
+    pImg = 1/1.9;
+    function render() {
+        var html = '';
+        try {
+            html = TJ([
+                    '<div class="main">',
+                        '<img src="{$icon}">',
+                        '<h1 class="single-line">{$title}</h1>',
+						'<span class="desc">{$desc}</span>',
+						'<button>Play</button>',
+					'</div>',
+            ].join(''))({
+                title: '{TITLE}',
+                desc: '{DESC}',
+                icon: '{ICON}'
+            });
+        } catch(e) {
+            html = '<div style="color:transparent">' + e + '</div>';
+        }
+        
+        return html
+    }
+    
+</script>
+
+<style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+    }
+	html,body {
+		background: #dde0e0;
+        font-family: "Roboto", Arial, 'Microsoft YaHei', sans-serif;
+        color: #444;
+        font-size: 14px;
+    }
+	section{
+	    background: #fff;
+		border-radius: 5px;
+		box-shadow: 1px 1px 1px #aeaeae;
+	}
+	.desc {
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
+		display: block;
+		color: #aeaeae;
+		margin-left: 80px;
+		width:50%;
+		padding-top: 10px;
+		font-size: 14px;
+    	line-height: 18px;
+	}
+    .main {
+        position: relative;
+        background: #FDFEFF;
+		padding: 15px;
+		padding-bottom: 5px;
+		border-radius: 4px;
+    }
+	.main:after {
+		content: "";
+		display: block;
+		height: 0;
+		clear: both;
+		visibility: hidden;
+	}
+    .main img {
+       width: 72px;
+		height: 72px;
+		border-radius: 8px;
+		float: left;
+		margin-top: 0;
+		margin-bottom: 15px;
+		position: absolute;
+		top: 10px;
+    }
+    h1 {
+        font-size: 22px;
+        padding-bottom: 6px;
+        line-height: 18px;
+        width: 90%;
+    } 
+	.single-line{
+		color: #303030;
+		width: 70%;
+		margin-left: 80px;
+		overflow: hidden;
+		display: block;
+		padding-top: 9px;
+		font-size: 16px;
+    	line-height: 18px;
+	}
+    .small {    
+		font-size: 16px;
+		line-height: 22px;
+        display: block;
+        overflow: hidden;
+		padding: 0 1.5em;
+		margin-bottom: 1.6em;
+		color:#313131;
+		word-break: break-all;
+        font-family: "Roboto Light", Arial, 'Microsoft YaHei', sans-serif;
+    }
+	button{
+		background: #3ebf46;
+		margin: auto;
+		display: inline-block;
+		box-shadow: none;
+		border-radius: 5px;
+		color: #fff;
+		border-width: 0;
+		width: 3em;
+		float: right;
+		margin-top: -30px;
+		height: 40px;
+    	font-size: 18px;
+	}
+	#close{
+		background: #000;
+	    width: 20px;
+	    height: 20px;
+	    position: relative;
+	    margin-top: 5px;
+	    margin-right: 5px;
+	    border-radius: 0;
+	    z-index: 9999;
+	}
+</style>
+<!-- @@close-->
+
+<!-- @@block = body -->
+<button type="button" id="close">X</button>
+<section id="wrap" class="wrap">
+	<script>WRITE(render())</script>
+</section>
+<!-- @@close-->
+
+<!-- @@block = footer -->
+<script>
+    SDK.init();
+    SDK.bindEmitEvent('#wrap', 'ViewClicked', function (action) {
+        var s = '{IS_SHELTER}';
+        if(s == '1') {
+            SDK.showLoading();
+        }
+        // sdk1.1中，ViewClicked 方法需要两个参数，第一个为0代表使用默认广告
+        action('{AD_ID}', s);
+    });
+
+    SDK.bindEmitEvent('#close', 'ViewClosed', function (action) {
+		action() //调用sdk
+	})
+</script>
+
+<!-- dev tools -->
+<!-- @@close-->
+

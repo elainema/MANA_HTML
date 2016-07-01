@@ -1,0 +1,201 @@
+<!-- @@master  = ../../master.html-->
+
+<!-- @@block = define-->
+<!-- <meta content="" /> -->
+<meta content="freewatchtube/v1/freewatchtube3,SDK1.1">
+<!-- @@close-->
+
+<!-- @@block = header -->
+<script>
+    function ws(p) {
+        var h = '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsSAAALEgHS3X78AAABfElEQVRYw+2W3U3DMBSFPxDv3A1oB4gIEzQjdITw6idGyBR5pWwAG7QT0MoDQDdwJygPcZFJE9m9CZUq9UhRouufe+6JfWy44pLh6qxwdVYMmeNuIIcK2ANL7QS3Q6oHZsAgFdQEgJfgu9ROcqOsfgJ8tcJTMfb7XApUibHxFeipXq2CRoFK2TZMAVdnQrPq3yNd58BKjHUnE/DbaQ8UgAB58NZgDbjgvQQQY1dHBFydlcCrMtGpeBZjF10KnIPEb/IjAp7EHFgA9yMn3gFzMXYZBjsXoauznOZ/jUViBxRi7Lrd0LkNfccC2I6QfNuXvFeBQAnxSjwqk298ctfXIeoDnsQaeFBUnsf8IMmIXJ3tNeWLsdH5o1bsF6QKKWNTzgI1gZSxF0/gzT//SmDWEfugOftLMbYEpj6WMvYPYj6QA59BaAVUbTsN+hc0d4Iw8VOfCUH8Wn6QcAuUfYkP8O2HW/KCxjtyGh9RERBap1cKPJGJP13llLFXnB0/iD160pWF6mMAAAAASUVORK5CYII=" />';
+        var h1 = '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsSAAALEgHS3X78AAABfElEQVRYw+2WzVHDMBCFPxh0xh2QVMBSQVxCzjqZDijBnRAuPkMHSQUoFUA6SM4+hIMVRjj2SFmbzGQmb8Zjz+pn3z5LT4IrLhm1q/LaVfmQOe4GciiBPbDUTnA7pHpgBgxSQU0AeAm+C+0kN8rqJ8BXKzw1Yr/PpUCZGBtfgZ7q1SpoFCiVbcMUqF2V0az690jXObAyYrcnE/DbaQ/kQAZI8NbAAdvgvQQwYldHBGpXFcCrMtGpeDZiF10KnIPEb/IjAp7EHFgA9yMn3gFzI3YZBjsXYe0qoflfY5HYAbkR69oNndvQd8yBzQjJN33JexUIlMi8Eo/K5GuffNvXIeoDnoQDHhSVS8wPkoyodtVeU74RG50/asV+QaqQMjblLFATSBl78QTe/POvBGYdsQ+as78wYgtg6mMpY/8g5gMCfAahFVC27TTon9PcCcLET30mBPFr+UHCDVD0JT7Atx9uyQsa7xAaH1ERyGidXinwRCb+dM1OGXvF2fEDHiJ60sg78Y0AAAAASUVORK5CYII=" />'
+        return '<span class="star">' +
+            h1 + h1 + h1 + h1 + h1 + 
+            '<span class="star star-cover" style="width: '+ (p/5 * 100) +'%"><span class="star-inner">' +
+                h + h + h + h + h + 
+            '</span></span>' +
+            '</span>'
+    }
+    
+    function render() {
+        var html = '';
+        try {
+            html = TJ([
+                '<div class="main">',
+					'<div class="left">',
+						'<h1 class="single-line">{$title}</h1><br />',
+						'{$star}',
+					'</div>',
+					'<div class="rightFigure">',
+						'<figure style="background-image:url({$picture})">',
+					'</div>',
+					'</figure>',
+                '</div>'
+            ].join(''))({
+                title: '{TITLE}',
+                star: ws('{RATING}'),
+                picture: '{IMG_320_167}'
+            });
+        } catch(e) {
+            html = '<div style="color:transparent">' + e + '</div>';
+        }
+        
+        return html
+    }
+    
+</script>
+
+<style type="text/css">
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    body {
+        background: #000;
+        font-family: "Roboto", Arial, '微软雅黑', sans-serif;
+        color: #444;
+        font-size: 14px;
+    }
+    .icon.icon-heartf {
+        font-size:22px;
+        display: inline;
+        vertical-align: middle;
+        position: relative;
+        /* top: px; */
+        color: #CC542C;
+    }
+	.left{
+		width: 55%;    float: left;
+	}
+	figure {
+		width: 100%;
+		height: 0;
+		padding-bottom: 100%;
+		overflow: hidden;
+		position: relative;
+		background-size: cover;
+		background-position: center;
+	}
+	.single-line{
+		width: 100%;
+		color:#303030;
+        text-align: right;
+        padding-top: 20px;
+	}
+	.rightFigure{
+		width: 40%;
+        float: right;
+		top: 0;
+		right: 0;
+	}
+    .main {
+		padding-left: 1em;
+		background: #FDFEFF;
+    }
+	.main:after {
+		content: "";
+		display: block;
+		height: 0;
+		clear: both;
+		visibility: hidden;
+	}
+    .main .icon {
+        width: 4.5rem;
+        height: 4.5rem;
+        border-radius: 4px;
+        position: absolute;
+        left:1.6rem;
+        top:-36px;
+    }
+    h1 {
+        font-size: 18px;
+        padding-bottom: 2px;
+        line-height: 18px;
+        white-space:nowrap;
+        font-weight: normal;
+        width: 60%;
+    }
+    .small {
+        color: #999;
+        font-size: 14px;
+        line-height: 18px;
+        display: block;
+        overflow: hidden;
+        height: 40px;
+    }
+	.star {
+		display: block;
+		position: relative;
+		float: right;
+	}
+	.star img {
+		color: #FBD0A6;
+		margin-right: 1px;
+		width: 1.5em;
+    }
+    .star-cover {
+        position: absolute;
+        left: 0;
+        top: 0;
+        overflow: hidden;
+    }
+    .star-inner {
+        display: block; 
+        width: 200px;
+    }
+    .star-cover .icon-starf{
+        color: #F0962D;
+    }
+
+    .install {
+        position: absolute;
+        right: 1.6rem;
+        bottom: 1.1rem;
+        /* -webkit-transform: translate(0, -50%);
+        transform: translate(0, -50%); */
+        background: #3ABE4E;
+        color: #fff;
+        padding: .6rem 2rem;
+        border-radius: 0.2rem;
+        text-decoration: none;
+        font-size: 12px;
+        background: -webkit-linear-gradient(#86ca6f, #6dc64f);
+        background: linear-gradient(#86ca6f, #6dc64f);
+    }
+</style>
+<!-- @@close-->
+
+<!-- @@block = body -->
+<section id="wrap" class="wrap">
+    <script>WRITE(render())</script>
+</section>
+<!-- @@close-->
+
+<!-- @@block = footer -->
+<script>
+    var pImg = 1/1.9;
+    var bg = query("figure");
+    window.addEventListener("resize", show)
+    function show() {
+        bg.style.paddingBottom = pImg * 100 + "%";
+        var height = bg.offsetHeight;
+        var title = query(".single-line");
+        title.style.paddingTop = height / 4 == 0 ? 20 : (height / 4) + "px";
+    }
+    show();
+    SDK.init();
+    SDK.bindEmitEvent('#wrap', 'ViewClicked', function (action) {
+        var s = '{IS_SHELTER}';
+        if(s == '1') {
+            SDK.showLoading();
+        }
+        // sdk1.1中，ViewClicked 方法需要两个参数，第一个为0代表使用默认广告
+        action('{AD_ID}', s);
+    });
+</script>
+
+<!-- dev tools -->
+<!-- @@close-->
+
